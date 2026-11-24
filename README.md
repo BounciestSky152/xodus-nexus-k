@@ -43,9 +43,10 @@ npm run dist
 ```
 
 Then make `release/Xodus-Nexus-*-x86_64.AppImage` executable and open it.
-The AppImage and install script from the original
-[Xodus Nexus releases](https://github.com/domsvoboda/xodus-nexus/releases) do not
-include this fork's changes, and the launcher's in-app updates also come from there.
+Launcher updates check this fork's [releases](https://github.com/BounciestSky152/xodus-nexus-kay/releases),
+so none are offered until it publishes one. The AppImage from the original
+[Xodus Nexus releases](https://github.com/domsvoboda/xodus-nexus/releases) does not
+include this fork's changes.
 
 In **Settings**, install the **Nexus backend** and **Nexus runtime**, then sign in
 with your Microsoft account. A valid game purchase or subscription is required.
