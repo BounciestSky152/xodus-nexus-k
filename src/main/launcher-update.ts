@@ -18,7 +18,7 @@ export function launcherCandidate(releases: Release[], current: string): Launche
   stable.sort((a, b) => isNewerVersion(a.tag_name, b.tag_name) ? -1 : isNewerVersion(b.tag_name, a.tag_name) ? 1 : 0);
   for (const r of stable) {
     if (!isNewerVersion(r.tag_name, current)) continue;
-    const name = `Xodus-Nexus-${r.tag_name.slice(1)}-x86_64.AppImage`;
+    const name = `Xodus-Nexus-K-${r.tag_name.slice(1)}-x86_64.AppImage`;
     const image = r.assets?.find(a => a.name === name);
     const checksum = r.assets?.find(a => a.name === `${name}.sha512sum`);
     if (!image || !checksum || !assetUrl(image.browser_download_url, r.tag_name, image.name) ||

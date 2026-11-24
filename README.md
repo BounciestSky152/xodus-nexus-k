@@ -42,7 +42,7 @@ npm ci
 npm run dist
 ```
 
-Then make `release/Xodus-Nexus-*-x86_64.AppImage` executable and open it.
+Then make `release/Xodus-Nexus-K-*-x86_64.AppImage` executable and open it.
 Launcher updates check this fork's [releases](https://github.com/BounciestSky152/xodus-nexus-kay/releases),
 so none are offered until it publishes one. The AppImage from the original
 [Xodus Nexus releases](https://github.com/domsvoboda/xodus-nexus/releases) does not

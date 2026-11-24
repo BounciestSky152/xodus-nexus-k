@@ -11,7 +11,7 @@ function image(marker: number): Buffer {
   bytes[4] = 2; bytes[5] = 1; Buffer.from('414902', 'hex').copy(bytes, 8); bytes.writeUInt16LE(62, 18); return bytes;
 }
 function release(version = '0.2.3') {
-  const name = `Xodus-Nexus-${version}-x86_64.AppImage`;
+  const name = `Xodus-Nexus-K-${version}-x86_64.AppImage`;
   return { tag_name: `v${version}`, assets: [
     { name, size: 100, browser_download_url: `https://github.com/BounciestSky152/xodus-nexus-kay/releases/download/v${version}/${name}` },
     { name: `${name}.sha512sum`, size: 200, browser_download_url: `https://github.com/BounciestSky152/xodus-nexus-kay/releases/download/v${version}/${name}.sha512sum` },

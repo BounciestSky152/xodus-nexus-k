@@ -9,7 +9,7 @@
 #      XODUS_NEXUS_SKIP_DEPS=1): backend sign-in and Electron runtime libraries.
 #      Rust/Cargo/protoc are not needed for the prebuilt backend.
 #   2. Downloads the latest Xodus Nexus AppImage from GitHub Releases.
-#   3. Installs it to ~/.local/opt/xodus-nexus, links it into ~/.local/bin
+#   3. Installs it to ~/.local/opt/xodus-nexus-k, links it into ~/.local/bin
 #      and registers a desktop entry with the app icon.
 #
 # Environment overrides:
@@ -19,7 +19,7 @@ set -euo pipefail
 
 REPO="BounciestSky152/xodus-nexus-kay"
 PREFIX="${XODUS_NEXUS_PREFIX:-$HOME/.local}"
-APP_DIR="$PREFIX/opt/xodus-nexus"
+APP_DIR="$PREFIX/opt/xodus-nexus-k"
 BIN_DIR="$PREFIX/bin"
 DESKTOP_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/applications"
 LOCAL_APPIMAGE="${XODUS_NEXUS_APPIMAGE:-}"
@@ -98,7 +98,7 @@ fi
 
 # ------------------------------------------------------------------ AppImage
 mkdir -p "$APP_DIR" "$BIN_DIR" "$DESKTOP_DIR"
-target="$APP_DIR/Xodus-Nexus.AppImage"
+target="$APP_DIR/Xodus-Nexus-K.AppImage"
 
 if [[ -n "$LOCAL_APPIMAGE" ]]; then
   [[ -f "$LOCAL_APPIMAGE" ]] || die "XODUS_NEXUS_APPIMAGE points to a missing file: $LOCAL_APPIMAGE"
@@ -124,31 +124,31 @@ curl -fsSL --max-time 30 -o "$APP_DIR/icon.png" \
   "https://raw.githubusercontent.com/$REPO/main/assets/icon.png" \
   || warn "Could not download the icon; the desktop entry will use a generic icon."
 
-ln -sf "$target" "$BIN_DIR/xodus-nexus"
+ln -sf "$target" "$BIN_DIR/xodus-nexus-k"
 
-cat > "$DESKTOP_DIR/xodus-nexus.desktop" <<EOF
+cat > "$DESKTOP_DIR/xodus-nexus-k.desktop" <<EOF
 [Desktop Entry]
 Type=Application
-Name=Xodus Nexus
+Name=Xodus Nexus K
 Comment=Open-source Xbox-inspired game launcher
-Exec=$BIN_DIR/xodus-nexus %U
+Exec=$BIN_DIR/xodus-nexus-k %U
 Icon=$APP_DIR/icon.png
 Terminal=false
 Categories=Game;
-StartupWMClass=xodus-nexus
+StartupWMClass=xodus-nexus-k
 EOF
 command -v update-desktop-database >/dev/null && update-desktop-database "$DESKTOP_DIR" || true
 
 case ":$PATH:" in
   *":$BIN_DIR:"*) : ;;
-  *) warn "Add $BIN_DIR to PATH to run 'xodus-nexus' from a terminal (usually already in ~/.profile)." ;;
+  *) warn "Add $BIN_DIR to PATH to run 'xodus-nexus-k' from a terminal (usually already in ~/.profile)." ;;
 esac
 
-log "Xodus Nexus installed."
+log "Xodus Nexus K installed."
 cat <<'EOF'
 
 First run:
-  1. Start Xodus Nexus from your application menu (or: xodus-nexus).
+  1. Start Xodus Nexus K from your application menu (or: xodus-nexus-k).
   2. In Settings -> Xodus backend, click Install backend.
      This downloads and verifies our patched, prebuilt Xodus backend; no compiler needed.
   3. In Settings -> Nexus runtime, click Install Nexus runtime.
