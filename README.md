@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="assets/icon.png" width="96" alt="Xodus Nexus" />
+<img src="assets/icon.png" width="96" alt="Xodus Nexus K" />
 
-# Xodus Nexus
+# Xodus Nexus K
 
 Your Microsoft Store PC games, on Linux.
 
-[![CI](https://github.com/domsvoboda/xodus-nexus/actions/workflows/ci.yml/badge.svg)](https://github.com/domsvoboda/xodus-nexus/actions/workflows/ci.yml)
+[![CI](https://github.com/BounciestSky152/xodus-nexus-kay/actions/workflows/ci.yml/badge.svg)](https://github.com/BounciestSky152/xodus-nexus-kay/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 </div>
@@ -14,7 +14,9 @@ Your Microsoft Store PC games, on Linux.
 > [!CAUTION]
 > **Xodus Nexus is an independent, unofficial project built on Xodus. It is not an official project or release from the upstream Xodus developers.**
 >
-> Please report all issues encountered with **Xodus Nexus** only in the [Xodus Nexus repository](https://github.com/domsvoboda/xodus-nexus/issues), not in the upstream Xodus issue tracker or support channels.
+> Xodus Nexus K is a fork of [Xodus Nexus](https://github.com/domsvoboda/xodus-nexus) with its own changes, such as Game Pass tier sorting.
+>
+> Please report issues with this fork in the [Xodus Nexus K repository](https://github.com/BounciestSky152/xodus-nexus-kay/issues), not in the upstream Xodus issue tracker or support channels.
 >
 > Nexus includes its own changes, so a problem in Nexus does not necessarily indicate a problem in upstream Xodus.
 
@@ -31,6 +33,7 @@ for supported games.
 ## Install
 
 Download the latest x86_64 Linux AppImage from [Releases](https://github.com/domsvoboda/xodus-nexus/releases), make it executable and open it.
+This fork does not publish its own builds yet: the AppImage, the install script and in-app updates come from the original Xodus Nexus releases.
 
 For an application-menu installation on supported distributions:
 
@@ -86,7 +89,7 @@ Use Steam + X for the on-screen keyboard in Game Mode;
 system file pickers and sign-in windows may still need mouse or touch input.
 
 [Documentation](https://github.com/domsvoboda/xodus-nexus/wiki) ·
-[Report an issue](https://github.com/domsvoboda/xodus-nexus/issues)
+[Report an issue](https://github.com/BounciestSky152/xodus-nexus-kay/issues)
 
 ## How it works
 
