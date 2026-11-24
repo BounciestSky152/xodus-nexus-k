@@ -32,7 +32,7 @@ for supported games.
 
 ## Install
 
-This fork does not publish releases. Build its AppImage from source on x86_64
+This fork is currently working on publishing releases. Build its AppImage from source on x86_64
 Linux with Node.js 22 and Git:
 
 ```sh
