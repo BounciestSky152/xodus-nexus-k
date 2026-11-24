@@ -408,6 +408,12 @@ export function LibraryProductCard({ product, present, downloading, installing, 
 }
 
 /** Installed games first unless sorting by tier. Installed games only know their tier once their library page has loaded. */
+/** Xbox-style pill row: one tap picks a filter, unlike a dropdown. */
+export function FilterPills<T extends string>({ label, value, options, change }: { label: string; value: T; options: [T, string][]; change: (value: T) => void }) {
+  return <div className="filter-pills" role="radiogroup" aria-label={label}>{options.map(([option, text]) =>
+    <button key={option} type="button" role="radio" aria-checked={value === option} className={value === option ? 'active' : undefined} onClick={() => change(option)}>{text}</button>)}</div>;
+}
+
 export function libraryRows(games: Game[], page: Pick<AccountLibraryPage, 'products' | 'accessByProductId'> | undefined, { kind, playState, sort, query }: LibraryFilters) {
   const installed = new Set(games.flatMap(game => game.storeId?.toUpperCase() ?? []));
   const products = (page?.products ?? []).filter(product => !installed.has(product.productId) && !installed.has(product.installProductId ?? ''));
@@ -497,8 +503,8 @@ export function AccountGames({ data, toast, selectedId, select, menu, filters, o
   }
   return <section className="account-games">
     <div className="library-filters" data-gamepad-filters>
-      <label>Access<select aria-label="Access" value={kind} onChange={event => setKind(event.target.value as AccountLibraryPage['kind'])}><option value="all">All games</option><option value="owned">Owned</option><option value="gamepass">In Game Pass</option></select></label>
-      <label>Play state<select aria-label="Play state" value={playState} onChange={event => setPlayState(event.target.value as typeof playState)}><option value="all">All states</option><option value="installed">Installed</option><option value="installable">Ready to install</option></select></label>
+      <FilterPills label="Access" value={kind} change={setKind} options={[['all', 'All games'], ['owned', 'Owned'], ['gamepass', 'In Game Pass']]} />
+      <FilterPills label="Play state" value={playState} change={setPlayState} options={[['all', 'All states'], ['installed', 'Installed'], ['installable', 'Ready to install']]} />
       <label>Sort<select aria-label="Sort" value={sort} onChange={event => setSort(event.target.value as typeof sort)}><option value="installed-first">Installed first</option><option value="pass-tier">Game Pass tier</option></select></label>
       <label className="library-filter-search">Search<input aria-label="Search library" placeholder="Search your games" value={query} onChange={event => setQuery(event.target.value)} /></label>
       <button className="secondary library-refresh" aria-label="Refresh library" title="Refresh library" disabled={!available || busy} onClick={() => load(true)}>{busy ? <LoaderCircle className="spin" /> : <RefreshCw />}</button>

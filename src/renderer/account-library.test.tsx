@@ -22,11 +22,11 @@ it('restores the parent-owned filters after the library is recreated',()=>{
   const data=demoSnapshot(); data.auth={running:false,stored:false,note:''};
   const library=()=>renderToStaticMarkup(<AccountGames data={data} toast={()=>{}} filters={filters} onFiltersChange={()=>{}} />);
   for(const html of [library(),library()]) {
-    expect(html).toContain('<option value="owned" selected="">');
-    expect(html).toContain('<option value="installed" selected="">');
+    expect(html).toMatch(/role="radio" aria-checked="true" class="active">Owned</);
+    expect(html).toMatch(/role="radio" aria-checked="true" class="active">Installed</);
     expect(html).toContain('<option value="pass-tier" selected="">');
     expect(html).toContain('value="Edition"');
-    expect(html).not.toContain('<option value="all" selected="">');
+    expect(html).not.toMatch(/aria-checked="true" class="active">All (games|states)</);
   }
 });
 it('offers Access and Play state filters without cloud streaming, preserving installed games offline',()=>{
