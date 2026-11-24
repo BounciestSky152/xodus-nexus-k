@@ -46,9 +46,13 @@ export function validateBackendManifest(value: unknown): BackendPackageManifest 
 }
 
 export function backendAssetUrl(tag: string, name: string, url: unknown): string {
-  const expected = `https://github.com/${BACKEND_REPOSITORY}/releases/download/${encodeURIComponent(tag)}/${name}`;
-  if (url !== expected) throw new Error('Unexpected backend release asset URL.');
-  return expected;
+  // GitHub reports a renamed or transferred repository under its new owner/name;
+  // the release itself still comes from BACKEND_REPOSITORY's API listing.
+  const suffix = `/releases/download/${encodeURIComponent(tag)}/${name}`;
+  const repository = typeof url === 'string' && url.startsWith('https://github.com/') && url.endsWith(suffix)
+    ? url.slice('https://github.com/'.length, -suffix.length) : '';
+  if (!/^[A-Za-z0-9-]+\/[A-Za-z0-9._-]+$/.test(repository)) throw new Error('Unexpected backend release asset URL.');
+  return url as string;
 }
 
 export function validateBackendArchive(entries: string[], verbose: string[], packageName = backendPackageName(backendLock.version)): void {
