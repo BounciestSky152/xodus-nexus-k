@@ -39,6 +39,7 @@
     { "file": "xodus-metadata-recovery.patch", "sha256": "b72c473615f2e5d359101cb5fae404aa3b54a34a73118b1c7f99238bd16860e3" },
     { "file": "xodus-streaming-handoff.patch", "sha256": "3be60b5dbca7fae0cb97e18e64665662620b9527c4c1340acfb4c2e2d497e648" },
     { "file": "xodus-store-ticket.patch", "sha256": "5302a699a06208c9b51809eea31261a2a53facce1af3177611ecfc050abb4eb5" },
-    { "file": "xodus-keyring-encoding.patch", "sha256": "fa6a0d4ce87f39fdb74950248f1dfd6ccecc4724c76773f5cbf84a8a003729b8" }
+    { "file": "xodus-keyring-encoding.patch", "sha256": "fa6a0d4ce87f39fdb74950248f1dfd6ccecc4724c76773f5cbf84a8a003729b8" },
+    { "file": "xodus-eappx-binrw.patch", "sha256": "1cdae6d98d1a570717c001afc2364c9eec5554eb98fd78224ace703dcb2636ff" }
   ]
 }
