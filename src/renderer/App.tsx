@@ -3,7 +3,7 @@ import {
   ArrowDownToLine, Check, ChevronRight, CircleAlert, CircleUserRound,
   Clock3, Cog, Download, FolderOpen, Gamepad2, Github, HardDrive, Home, Library,
   LoaderCircle, LogIn, MoreHorizontal, PackageCheck, Pause, Play, Plus, RefreshCw, Rocket, Search, Settings2,
-  Store, Terminal, Trash2, X,
+  Store, Sun, Moon, Terminal, Trash2, X,
 } from 'lucide-react';
 import type { AccountLibraryPage, AppSnapshot, CatalogProduct, CatalogSearchResult, DiagnosticLog, Game, GameContentPlan, GameLaunchOptions, Page, Settings } from '../shared/types';
 import { estimateTimeRemaining } from '../shared/utils';
@@ -91,6 +91,21 @@ function AccountAvatar({ auth, large = false }: { auth: AppSnapshot['auth']; lar
   </div>;
 }
 
+const themeKey = 'xodus-nexus.theme';
+export function applySavedTheme() {
+  try { if (localStorage.getItem(themeKey) === 'light') document.documentElement.dataset.theme = 'light'; } catch { /* Dark by default. */ }
+}
+
+function ThemeToggle() {
+  const [light, setLight] = useState(() => typeof document !== 'undefined' && document.documentElement.dataset.theme === 'light');
+  function toggle() {
+    const next = !light; setLight(next);
+    if (next) document.documentElement.dataset.theme = 'light'; else delete document.documentElement.dataset.theme;
+    try { localStorage.setItem(themeKey, next ? 'light' : 'dark'); } catch { /* Applies for this session only. */ }
+  }
+  return <button title={light ? 'Dark mode' : 'Light mode'} aria-label={light ? 'Switch to dark mode' : 'Switch to light mode'} onClick={toggle}>{light ? <Moon /> : <Sun />}</button>;
+}
+
 export function TopStatus({ data, go }: { data: AppSnapshot; go: (page: Page) => void }) {
   const restart = data.launcherUpdate?.restartRequired;
   const updates = [
@@ -101,7 +116,7 @@ export function TopStatus({ data, go }: { data: AppSnapshot; go: (page: Page) =>
   const updateTitle = [restart ? 'Restart to finish launcher update.' : '', updates.length ? `Available updates: ${updates.join(', ')}` : ''].filter(Boolean).join(' ');
   return <div className="top-status">
     {updates.length || restart ? <button className="update-notice" title={updateTitle} aria-label={updateTitle} onClick={() => go('settings')}><ArrowDownToLine /><strong>{restart ? 'Restart available' : 'Update available'}</strong></button> : null}
-    <StatusDot tone={data.backend.available ? 'green' : 'red'} /><span>{data.backend.available ? 'Xodus ready' : 'Backend offline'}</span><button title="Settings" onClick={() => go('settings')}><Settings2 /></button>
+    <StatusDot tone={data.backend.available ? 'green' : 'red'} /><span>{data.backend.available ? 'Xodus ready' : 'Backend offline'}</span><ThemeToggle /><button title="Settings" onClick={() => go('settings')}><Settings2 /></button>
   </div>;
 }
 

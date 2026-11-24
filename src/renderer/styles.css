@@ -666,3 +666,7 @@ button.primary:active:not(:disabled), button.secondary:active:not(:disabled), .q
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .catalog-card:hover, .catalog-card:focus-within, .featured-tile:hover { transform: none; }
 }
+
+/* Light mode: invert the dark palette, keeping artwork and the brand green in true colors. */
+:root[data-theme="light"] { color-scheme: light; filter: invert(.93) hue-rotate(180deg); }
+:root[data-theme="light"] :is(img, video, .game-cover, .cover-placeholder, .featured-tile, .spotlight, .catalog-selection.has-art, .status-dot, .nav-item b, .progress-track i, button.primary) { filter: invert(1) hue-rotate(180deg); }
