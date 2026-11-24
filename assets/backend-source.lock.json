@@ -3,7 +3,7 @@
   "version": "0.2.10",
   "repository": "https://github.com/xodus-gaming/xodus.git",
   "commit": "eaac97e0251935a8a1684f4ad55c2580556cf627",
-  "rust": "1.99.0",
+  "rust": "1.100.0",
   "cargoLockSha256": "2259b343e00dadc263018beb7664b12e9d58a0b73bff502ad566f5f8619ce28a",
   "patchId": "linux-run-v33",
   "compatibility": "linux-run-v22",
